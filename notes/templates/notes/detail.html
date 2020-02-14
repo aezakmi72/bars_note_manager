@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+{{ note.title }}
+{% endblock title %}
+
+{% block content %}
+<div class="jumbotron">
+    <div class="container">
+        <p type="text" class="display-3 text-center container-fluid" rows="1" id="modal-title">{{ note.title }}</p>
+    </div>
+</div>
+<div class="container">
+    <textarea class="form-control" rows="20" id="content" readonly>{{ note.context }}</textarea>
+    <div class="modal-footer">
+        <div class="form-check form-check-inline">
+            <input type="checkbox" class="form-check-input" id="published" {% if note.published %} checked {% endif %}>
+            <label class="form-check-label" for="published">Published</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input type="checkbox" class="form-check-input" id="bookmark" {% if note.bookmark %} checked {% endif %}>
+            <label class="form-check-label" for="bookmark">Bookmark</label>
+        </div>        
+    </div>
+</div>
+<script src="{% static 'notes/btns.js' %}"></script>
+{% endblock content %}
